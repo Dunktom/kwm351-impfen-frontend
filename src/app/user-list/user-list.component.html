@@ -1,4 +1,4 @@
-<h1 class="header icon"><i class="users icon"></i> Benutzerliste</h1>
+<h1 class="header icon"><i class="users icon teal"></i> Benutzerliste</h1>
 
 <p *ngIf="!authService.isLoggedIn()">
   Nur User mit Admin rechten können diese Seite betrachten!
@@ -10,7 +10,11 @@
   </p>
 
   <div class="ui middle aligned selection divided list">
-    <a *ngFor='let user of users' [user]='user' [routerLink]="['users', user.id]"
-      class="item impfen-user-list-item"></a>
+    <a
+      *ngFor="let user of users"
+      [user]="user"
+      [routerLink]="['users', user.id]"
+      class="item impfen-user-list-item"
+    ></a>
   </div>
 </div>
