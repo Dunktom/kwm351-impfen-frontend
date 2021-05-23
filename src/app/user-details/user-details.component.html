@@ -1,0 +1,64 @@
+<div class="content">
+  <div>
+    <h1 class="header icon"><i class="user icon"></i> Benutzerprofil</h1>
+
+    <h3 class="ui header">
+      Vorname: {{user?.firstName}} <br />
+      Nachname: {{user?.lastName}}
+    </h3>
+    <div class="description">E-Mail: <b>{{user?.email}}</b></div>
+
+    <div *ngIf="user?.gender=='female'" class="description">
+      Geschlecht: <b>weiblich</b>
+    </div>
+    <div *ngIf="user?.gender=='male'" class="description">
+      Geschlecht: <b>männlich</b>
+    </div>
+    <div *ngIf="user?.gender=='divers'" class="description">
+      Geschlecht: <b>divers</b>
+    </div>
+    <div *ngIf="user?.gender=='apachekampfhelikopter'" class="description">
+      Geschlecht: <b>Apache-Kampfhelikopter</b>
+    </div>
+
+    <div class="description">
+      Sozialversicherungsnummer: <b>{{user?.socialSecurityNumber}}</b>
+    </div>
+    <div *ngIf="user?.vaccinated" class="description">
+      Impfung erhalten: <b>JA</b>
+    </div>
+    <div *ngIf="!user?.vaccinated" class="description">
+      Impfung erhalten: <b>NEIN</b>
+    </div>
+
+    <div *ngIf="user?.appointment_id" class="description">
+      Zu Termin angemeldet: Bei <b>{{location.name}}</b>, am <b>{{appointment.date | date:'longDate' }}</b>
+    </div>
+    <div *ngIf="!user?.appointment_id" class="description">
+      Zu Termin angemeldet: <b>NEIN</b>
+    </div>
+  </div>
+
+  <!-- Vaccination only possible if user hast appointment, isAdmin -->
+  <br />
+  <div *ngIf="user?.appointment_id && isAdmin">
+    <h3>Impfung verabreichen</h3>
+    <label class="switch">
+      <input
+        type="checkbox"
+        (change)="onChange(user.id)"
+        [checked]="user.vaccinated"
+      />
+      <span class="slider"></span>
+    </label>
+
+    <!--Sorry for cheap styling with br -->
+
+    <br />
+    <br />
+  </div>
+
+  <button [routerLink]="'../..'" class="ui medium basic button teal">
+    Zurück zur Übersicht
+  </button>
+</div>

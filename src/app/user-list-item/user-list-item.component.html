@@ -1,0 +1,9 @@
+<div class="content">
+  <div class="header">Name: {{user?.firstName}} {{user.lastName}}</div>
+  <div *ngIf="user?.vaccinated" class="description">Impfung erhalten: <b>JA</b></div>
+  <div *ngIf="!user?.vaccinated" class="description">Impfung erhalten: <b>NEIN</b></div>
+
+  <div *ngIf="user?.appointment_id" class="description">Termin vereinbart: <b>JA</b></div>
+  <div *ngIf="!user?.appointment_id" class="description">Termin vereinbart: <b>NEIN</b></div>
+
+</div>

@@ -1,0 +1,47 @@
+<div *ngIf="!isLoggedIn()">
+
+  <h1 class="header icon">
+    <i class="sign-in
+ icon"></i>Login
+  </h1>
+
+  <p> Bitte geben Sie ihre Emailadresse und ihr Passwort in den dafür vorhergesehenen Eingabefeldern ein und drücken Sie
+    anschließend auf "Login".
+  </p>
+
+  <form class="ui large form" [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <div class="field">
+      <label>E-Mail</label>
+      <input type="email" id="username" formControlName="username">
+      <div *ngIf="loginForm.get('username').invalid &&
+     (loginForm.get('username').dirty || loginForm.get('username').touched) &&
+     loginForm.get('username').hasError('required')" class="ui negative message">
+        Benutzername ist verpflichtend </div>
+      <div *ngIf="loginForm.get('username').invalid &&
+     (loginForm.get('username').dirty || loginForm.get('username').touched) &&
+     loginForm.get('username').hasError('email')" class="ui negative message">
+        E-Mail Format überprüfen </div>
+    </div>
+
+    <div class="field">
+      <label>Passwort</label>
+      <input type="password" formControlName="password">
+      <div *ngIf="loginForm.get('password').invalid &&
+     (loginForm.get('password').dirty || loginForm.get('password').touched)" class="ui negative message">
+        Passwort ist verpflichtend </div>
+    </div>
+
+    <button type="submit" class="ui button teal" [disabled]="loginForm.invalid">Login</button>
+
+  </form>
+</div>
+
+<div *ngIf="isLoggedIn()">
+  <h1 class="header icon">
+    <i class="sign-out icon"></i>Logout
+  </h1>
+  <p> Um sich von der Seite abzumelden, brauchen Sie lediglich den Logout Button drücken.
+  </p>
+  <button type="button" class="ui teal button" (click)="logout()">Logout</button>
+</div>

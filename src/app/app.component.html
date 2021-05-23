@@ -1,0 +1,33 @@
+<div class="ui inverted vertical masthead center aligned segment">
+
+  <div class="ui container">
+    <div class="ui fixed inverted menu">
+      <a routerLink="home" routerLinkActive="active" class="ui teal item">Home</a>
+      <a routerLink="locations" routerLinkActive="active" class="ui teal item">Impfstellen</a>
+
+      <div class="right menu">
+        <a *ngIf="isLoggedIn() && isAdmin()" routerLink="admin" routerLinkActive="active"
+          class="ui red item">Administration</a>
+        <a *ngIf="isLoggedIn()" routerLink="users/{{getUserId()}}" routerLinkActive="active"
+          class="ui teal item">Profil</a>
+        <a routerLink="login" routerLinkActive="active" class="ui teal item">{{getLoginLabel()}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui text container">
+    <h1 class="ui header">
+      <i class="syringe icon"></i>
+      <div class="content"> Impfen statt schimpfen!
+        <div class="sub header">Helfen Sie mit Leben zu retten</div>
+      </div>
+    </h1>
+  </div>
+
+</div>
+
+<div class="ui vertical stripe segment">
+  <div class='ui container'>
+    <router-outlet></router-outlet>
+  </div>
+</div>

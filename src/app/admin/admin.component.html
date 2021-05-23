@@ -1,0 +1,22 @@
+<h1 class="header icon"><i class="shield icon"></i> Willkommen im Adminportal</h1>
+<p>
+  Hier können Sie User, Impfstellen und Termine bearbeiten.
+</p>
+<h2>Impfstellen und Termine anlegen</h2>
+<button [routerLink]="['locations']" class="ui medium basic button teal">Impfstelle anlegen</button>
+<button [routerLink]="['appointments']" class="ui medium basic button teal">Termin anlegen</button>
+
+
+<h2>Impfstellen und Termine bearbeiten oder Löschen</h2>
+<p>
+  Um eine Impfstelle zu ändern, klicken Sie auf die gewünschte Station und wählen sie danach den Button "Bearbeiten"
+  oder "Löschen" aus. Termin können Sie nur in der dazugehörigen Impfstelle ändern. Wählen Sie in der Detailseite der
+  Station einen Termin aus und klicken Sie wiederum auf "Bearbeiten" oder "Löschen".
+</p>
+<b> Änderungen sind permanend und können nicht mehr rückgängig gemacht werden!</b>
+<br>
+<br>
+<impfen-location-list></impfen-location-list>
+<br>
+<br>
+<impfen-user-list></impfen-user-list>

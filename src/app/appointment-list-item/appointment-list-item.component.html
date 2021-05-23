@@ -1,0 +1,7 @@
+<div class="content">
+  <div class="header">{{appointment?.date | date:'longDate' }}</div>
+  <div *ngIf="users" class="description">
+    Es sind noch <b>{{freeSpots}}</b> von
+    {{appointment?.maxUsers}} Impfungen verfügbar.
+  </div>
+</div>

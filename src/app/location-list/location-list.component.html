@@ -1,0 +1,11 @@
+<h1 class="header icon"><i class="hospital icon teal"></i> Impfstellen</h1>
+<p>
+  Um möglichst schnell und problemlos nach Hause zu kommen, wählen Sie die näheste Stelle. Bei akuten
+  Nebenwirkungen des Impfstoffes, können Sie sich auch noch schnell nach Hause robben. Nutzen Sie die Vorteile Ihrer
+  Umgebung aus. Impfen Sie gleich!
+</p>
+
+<div class="ui middle aligned selection divided list">
+  <a *ngFor='let location of locations' [location]='location' [routerLink]="['../locations', location.name]"
+    class="item impfen-location-list-item"></a>
+</div>

@@ -1,0 +1,31 @@
+<div class="content">
+  <h1 class="header icon"><i class="hospital icon teal"></i>{{location?.name}}</h1>
+  <div class="description">{{location?.street}} {{location?.housenumber}}</div>
+  <div class="metadata">
+  </div>
+  <div class="extra">{{ location.zipcode }} {{ location.city }} </div>
+</div>
+
+<div *ngIf="authService.isLoggedIn() && isAdmin">
+
+  <br>
+  <a class="ui tiny yellow labeled icon button" [routerLink]="['../../admin/locations', location?.name]">
+    <i class="write icon"></i> Impfstelle bearbeiten </a>
+
+  <button class="ui tiny red labeled icon button" (click)="removeLocation()" ><i class="remove icon"></i>Impfstelle löschen</button>
+</div>
+
+<h3 class="icon"><i class="calendar icon teal"></i>Verfügbare Termine:</h3>
+<p>
+  Um sich für einen Termin anmelden zu können, müssen sie sich mit Ihrem Benutzerprofil einloggen. Falls die noch kein
+  Benutzerprofil haben, können Sie sich hier eines erstellen.
+</p>
+
+
+<div *ngIf="locationId">
+  <impfen-appointment-list *ngIf="locationId" [locationId]="locationId"></impfen-appointment-list>
+</div>
+
+<br>
+
+<button [routerLink]="'../'" class="ui medium basic button teal">Zurück zu allen Impfstationen</button>

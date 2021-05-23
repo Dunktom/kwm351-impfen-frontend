@@ -1,0 +1,50 @@
+<h1 *ngIf="location.name">Impfstandort bearbeiten</h1>
+<h1 *ngIf="!location.name">Neuen Impfstandort erstellen</h1>
+
+<form class="ui large form" [formGroup]="locationForm" (ngSubmit)="submitForm()">
+  <input type="hidden" name="id">
+
+  <div class="field">
+    <label>Name des Standortes</label>
+    <input formControlName="name">
+    <div *ngIf="errors.name" class="ui negative message"> {{ errors.name
+      }} </div>
+  </div>
+
+  <div class="field">
+    <label>Stadt</label>
+    <input formControlName="city">
+    <div *ngIf="errors.city" class="ui negative message">{{
+      errors.city }}</div>
+  </div>
+
+  <div class="field">
+    <label>Straße</label>
+    <input formControlName="street">
+    <div *ngIf="errors.street" class="ui negative message">{{
+      errors.street }}</div>
+  </div>
+
+  <div class="field">
+    <label>Hausnummer</label>
+    <input type="number" formControlName="housenumber">
+    <div *ngIf="errors.housenumber" class="ui negative message">{{
+      errors.housenumber }}</div>
+  </div>
+
+  <div class="field">
+    <label>Postleitzahl</label>
+    <input type="number" formControlName="zipcode">
+    <div *ngIf="errors.zipcode" class="ui negative message">{{
+      errors.zipcode }}</div>
+  </div>
+
+  <button type="submit" class="ui button  teal" [disabled]="locationForm.invalid">Speichern</button>
+
+  <button *ngIf="location.name" [routerLink]="['../../../locations', location.name]" class="ui medium basic button teal">Abbrechen</button>
+
+  <button *ngIf="!location.name" [routerLink]="'../'" class="ui medium basic button teal">Abbrechen</button>
+
+
+
+</form>
