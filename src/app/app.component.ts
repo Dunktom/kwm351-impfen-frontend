@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './shared/authentication.service';
-import { Location } from './shared/location';
 
 @Component({
   selector: 'impfen-root',
