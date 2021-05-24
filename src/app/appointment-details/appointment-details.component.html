@@ -5,23 +5,29 @@
     <div class="extra">{{ location?.zipcode }} {{ location?.city }} </div>
   </div>
 
-  <div *ngIf="authService.isLoggedIn() && isAdmin">
-    <br>
-    <a class="ui tiny yellow labeled icon button"
-      [routerLink]="['../../../admin/appointments' , location?.name ,appointment?.id]">
-      <i class="write icon"></i> Termin bearbeiten
-    </a>
-
-    <button class="ui tiny red labeled icon button" (click)="removeAppointment()" >
-      <i class="remove icon"></i>Termin löschen
-    </button>
-  </div>
-
   <br>
 
   <div>
     <h3 class="icon"><i class="calendar icon teal"></i>Ausgewählter Termin:</h3>
-    <p *ngIf="freeSpots != 0 && !isVaccinated">
+
+    <div *ngIf="authService.isLoggedIn() && isAdmin">
+      <a class="ui tiny yellow labeled icon button"
+        [routerLink]="['../../../admin/appointments' , location?.name ,appointment?.id]">
+        <i class="write icon"></i> Termin bearbeiten
+      </a>
+
+      <button class="ui tiny red labeled icon button" (click)="removeAppointment()" >
+        <i class="remove icon"></i>Termin löschen
+      </button>
+    </div>
+
+    <br>
+
+    <p *ngIf="freeSpots != 0 && !isVaccinated && !authService.isLoggedIn()" class="icon">
+      <i class="warning icon yellow"></i>Bitte loggen Sie sich ein, um einen Termin buchen zu können.
+    </p>
+
+    <p *ngIf="freeSpots != 0 && !isVaccinated && authService.isLoggedIn()">
       Um sich für diesen Termin anzumelden, drücken Sie bitte auf "Termin buchen".
     </p>
     <p *ngIf="freeSpots == 0">
@@ -32,6 +38,7 @@
     </p>
 
     <div class="header">{{ appointment?.date | date:'longDate' }}</div>
+
     <div *ngIf="users" class="description">Es sind noch <b>{{freeSpots}}</b> von
       {{appointment?.maxUsers}}
       Impfungen verfügbar.
